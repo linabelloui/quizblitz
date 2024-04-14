@@ -1,0 +1,33 @@
+.container {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px;
+}
+
+.darker {
+    border-color: #ccc;
+    background-color: #0b2c3f;
+}
+
+.lighter {
+    border-color: #ccc;
+    background-color: #cfa006;
+}
+
+.container::after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+.time-left {
+    float: left;
+    color: #999;
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de creation de partie</title>
+</head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
+<body>
+    <div class="container">
+      <app-navbar></app-navbar>
+      <h1 class="header-item"> Jeux </h1>
+      <div class="list-container">
+        <ul *ngFor="let game of getGames(); let i = index" id="{{ game.id }}">
+        <li *ngIf= "game.isVisible === true">
+          <button (click) = "gameSelection(game.id)">
+            <div class="game-container">
+              <span class="game-name">{{ game.title }}</span>
+                <button class="creationPartie" [hidden] = "!(gameIsSelected.get(game.id))" routerLink="/waitingplayers">{{createGame}}</button>
+                <button [hidden] = "!(gameIsSelected.get(game.id))"  (click)="sendCurrentGame(game)">{{testGame}}</button>
+            </div>
+          </button>
+          <div [hidden]="!(gameIsSelected.get(game.id))"> Description du jeu: {{game.description}}</div>
+          <div [hidden]="!(gameIsSelected.get(game.id))"> Temps alloué pour répondre: {{game.duration}} secondes </div>
+          <div [hidden]="!(gameIsSelected.get(game.id))"> Liste des questions : </div>
+          <ul [hidden]="!(gameIsSelected.get(game.id))" *ngFor="let question of game.questions">
+            <li>
+              <div> {{question.text}} </div>
+            </li>
+          </ul>
+        </li>
+      </ul> 
+    </div>
+    <button class="retour" routerLink="/home">Retour a la page principale</button>
+    </div>
+</body>
+</html>

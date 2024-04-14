@@ -1,0 +1,41 @@
+.header-item {
+    justify-content: center;
+    text-align: center;
+    font-family:'Cherry Bomb One', cursive;
+    font-size: 600%;
+    color: #fdfdfd;
+    display: grid;
+    align-items: center;
+    margin-top : 0px;
+    text-shadow : 2px 2px 4px rgba(0, 0, 0, 2);
+}
+.container {
+    background-color: #fe654f;
+    background-image: repeating-linear-gradient(
+        130deg,
+        #b54839,
+        // #B54839 10px,
+        transparent 10px,
+        transparent 20px
+    );
+
+    height: 200vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.retour {
+    border-radius: 20px;
+    width: 250px;
+    height: 60px;
+    background-color: rgba(34, 26, 71, 0.7);
+    margin-top: 2%;
+    margin-left: 7%;
+    font-weight: bold;
+    font-size: medium;
+    color: white;
+    font-family: 'Verdana', sans-serif;
+    margin-top: 200px;
+    margin-left: 0px;
+}

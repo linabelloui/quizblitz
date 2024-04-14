@@ -1,0 +1,16 @@
+<p class="points">{{ points }} points</p>
+<h1>{{ title }}</h1>
+<p class="description">{{ description }}</p>
+<div class="answer-container">
+    <button
+        type="button"
+        class="selected correct-choice-test choice-button"
+        *ngFor="let choice of choices; let i = index"
+        [class.selected]="selectedAnswers.includes(choices[i]) && isAllowedToChange"
+        [class.correct-choice-test]="showRightAnswersTest && answers.includes(choices[i])"
+        (click)="onClick($event)"
+        id="{{ choice }}"
+    >
+        {{ i + 1 + '.' }} {{ choice }}
+    </button>
+</div>

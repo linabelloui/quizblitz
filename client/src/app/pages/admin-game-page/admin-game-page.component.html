@@ -1,0 +1,52 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet" />
+<body>
+    <div class="background">
+        <app-navbar></app-navbar>
+        <h2 id="admin-title">Page d'administration</h2>
+        <div class="list-container">
+            <div class="game-list">
+                <ul>
+                    <li *ngFor="let game of games">
+                        <div class="game-container">
+                            <div class="game-info">
+                                <span class="game-name">{{ game.title }}</span>
+                                <button (click)="toggleVisibility(game)" class="visibility-button">
+                                    <img
+                                        src="{{ game.isVisible ? '../../../assets/open_eye.png' : '../../../assets/closed_eye.png' }}"
+                                        alt="{{ game.isVisible ? 'Open' : 'Closed' }}"
+                                        class="eye-icon"
+                                    />
+                                </button>
+                                <p class="last-modified">Last Modified: {{ game.lastModification | date }}</p>
+                            </div>
+                            <div class="game-actions">
+                                <button (click)="goToEditGamePage(game.id)" class="edit-button">
+                                    <img src="../../../assets/edit.png" alt="Edit" />
+                                </button>
+                                <button (click)="exportGame(game)" class="export-button">
+                                    <img src="../../../assets/json.png" alt="Export" />
+                                </button>
+                                <button (click)="deleteGame(game)" class="delete-button">
+                                    <img src="../../../assets/trash.png" alt="Delete" />
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="game-button-container">
+                <button (click)="createNewGame()" class="create-button">
+                    <img src="../../../assets/add.png" alt="Create New Game" />
+                </button>
+                <input type="file" accept=".json" class="import-button" (change)="importGame($event)" />
+            </div>
+        </div>
+        <div class="button-container">
+            <button class="return-button" routerLink="/home">Retour à la page principale</button>
+            <button class="history-button" routerLink="/history">Consulter l'historique des parties jouées</button>
+        </div>
+    </div>
+</body>
